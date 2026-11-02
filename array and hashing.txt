@@ -1,0 +1,38 @@
+Arrary and Hashing:-
+
+1) Contains Duplicate:- Run a look over the array, everytime, check for the element in unordered set or map, if exists return true, then insert in set
+	or map... else if no match after traversing whole array then return false.
+
+2) Valid Anagram:- create a hash vector, traverse s1 and increse freq every time the character is found... then traverse s2 and decrease freq each time the 
+character is found, then check if all the values in hash array are 0 if not then false else true;
+
+3) Two sum:- Take an unordered map, traverse the array, check if target-nums[i] is in the map, if it is return... put the number with index in the map.
+
+4) Group Anagram:- First we convert every string we traverse into a base string "charFreqcharFreq...." then just in our unordered_map<string, vector<string>
+> , we just do mpp[base].push_back(string).
+Then, we can traverse the map and put every it.second into a vector of vector<string>.
+
+5) Top k frequent elements:- First get the frequency using unordered_map, then iterate over the map and make a max heap(pq with vector and greater),
+if(pq.size()<k) then just push, else if(mpp.second > pq.top().first) then, pop and push new one.
+Then just make a vector and for 0 to k-1 put the value in array and pop from pq. 
+
+6) Product of array except self:- take an answer array and initialize everything as 1. then take left and right ints as 1. run a for loop from 0 to n-1,
+everytime multiply ans[i]*left & ans[n-i-1]*right, then multiply left with nums[i] & right with nums[n-i-1];
+
+
+7)Valid Sudoku:- 
+	Method 1(less space)--> create an unordered_set<string> run 2 for loops 0 to 8 each, if . then continue, make 3 strings row = val on board+_ROW_+(i),
+	same with col but put j instead, and for box = val on board+_BOX_+i/3+_+j/3
+	Check if any is in the set then return false, else insert them all.
+	
+	Method 2--> make 3 bool 2d arr row, col and box one for the row, col or box val, another for dig=board[i][j]-'1'. 2 for loops, check if any of them are
+	true, else make all of them true. then outside return true;
+
+
+8)Longest consequent subsequence:- (check till no further consequent num exists then count and move num forward)
+Put all the nums in unordered_set. iterate over the set, if the num-1 is found in set, continue. then make cur=num then initialize cnt to 0.
+while cur exists in set, cur++ and cnt++, then check with max count if current count is better. 
+
+
+
+9) Encode and Decode Strings:- 

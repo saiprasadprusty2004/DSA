@@ -1,0 +1,48 @@
+1) Invert Binary Tree-->
+	Check if root is null then return null.
+	Goal is to go to the leftmost and rightmost nodes, Then create a temp, and write swap for root->left and root->right. 
+	Feels wrong because if last node, then left and right will be null, but that doesn't matter, swap nulls same shit as before.
+	But recursion, will help swap every node from left to right...
+
+2) Maximum Depth of Binary Tree-->
+	Check if root is null then return null.
+	Then just return max(func(root->left),func(root->right)) + 1.
+	This way, recursion will calculate for left and right and whichever has higher depth, will return that. +1 is to add an extra edge everytime
+	it recurses, to find height or depth.
+
+3) Diameter of Binary Tree-->
+	Check if root is null then return 0
+	l is root left recursion call, r is root right recursion call.
+	The maxLength is either maxi or l+r --> we can't pass l+r while returning else it will compound. So, we return max of (l,r)+1;
+	This takes out the max of both and adds 1 edge to them.
+
+4) Balanced Binary Tree-->
+	
+
+5) Validate BST
+
+6) Same Tree
+
+7) Subtree of Another Tree
+
+8) Lowest Common Ancestor Binary Tree
+
+9) Lowest Common Ancestor Binary Search Tree
+
+10) Level Order Traversal BT
+
+11) Zig Zag Traversal BT
+
+12) BT Right side view
+
+13) Count Good Nodes in BT
+
+14) Balance Binary Search Tree
+
+15) Kst Smallest/Largest element in BST
+
+16) Construct BT from Preorder and Inorder Traversal
+
+17) Maximum Path Sum in BT
+
+18) Serialize Deserialize BT

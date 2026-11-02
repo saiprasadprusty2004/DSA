@@ -1,0 +1,21 @@
+1) Asteroid Collision:-
+	
+	Its like checking for balanced parenthesis, the collisions destory and we pop out the loser.
+	if both are going in same direction, they won't colide, if first one is -ve and second is positive, then also opposite directions, no collision.
+	Only way for collision to happen is if first one is +ve and second one is -ve, so both are moving towards each other.
+	
+	
+	Use a stack, iterate over the array(using for), while (stack top is +ve and current element is -ve).
+	Then check who is bigger.
+	If -ve bigger, then pop is from stack till the st top is bigger or till (stack becomes empty--> inside upar while loop so it breaks when this happens).
+	We have to push the -ve one, once that happens, but before that there are other checks.
+	
+	If +ve bigger, just take the destroyed bool variable and mark it true--> so we move forward, ignoring the smaller -ve one.
+	
+	if both are of same size, both get destroyed, so pop from stack and mark destoryed as true.
+	
+	after every while loop iteration, check if(!destoryed) so, when -ve is bigger, we can push the negative in stack.
+	
+	Then just pop from stack and push to vector and reverse it.
+	
+	Using vector instead, same approach just no need reverse or pop, can directly return

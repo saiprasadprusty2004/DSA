@@ -1,0 +1,46 @@
+
+1) Minimum Number of swaps to Make array A[i]=B[i] -->Lets see from POV of graphs
+	
+
+	A) All Elements are unique(classical)
+	
+		Every Element is trying to go somewhere and every element is trying to come somewhere. Everyone has Indegree=1.
+		The graph we want to form from original array to where we want to go, contains cycles.
+		
+		IF we have X nodes in a cycles, we want X-1 Swaps.
+		For full graph --> N- no. of components + already correct (just overall thing for accumulation, not that imp)
+		
+
+		int minSwaps(vector<int>& arr) {
+			// Code here
+			int n=arr.size();
+			unordered_map<int,int> mpp;
+			
+			for(int i=0;i<n;i++) mpp[arr[i]]=i;
+			
+			sort(arr.begin(),arr.end());
+			vector<bool> vis(n,false);
+			int swaps =0;
+			
+			for(int i=0;i<n;i++){
+				if(vis[i] || mpp[arr[i]]==i) continue;
+				
+				int j=i;
+				int cycleSize=0;
+				
+				while(!vis[j]){
+					vis[j]=true;
+					j = mpp[arr[j]];
+					cycleSize++;
+				}
+				
+				if(cycleSize>0){
+					swaps += cycleSize-1;
+				}
+			}
+			return swaps;
+		}
+		
+	
+	B) Elements can Repeat(non Classical)
+		Maximal Cycle Decomposition of graph-->NP Hard

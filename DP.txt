@@ -1,0 +1,42 @@
+DP:-
+
+1) Climbing stairs:- N stairs, if we can either choose to go +1 step or +2 steps.... If we take +1 step, then we will have n-1 steps remaining, and
+if we take +2 steps, we will have n-2 stairs remaining, so we can use that as recurrance relation. 
+
+Memoization(top down)-->For dp, we just check that if it dp[n]!=-1 just under base case, if it is true, then we just return dp[n] val, else we return
+dp[n]=f(n-1)+f(n-2);
+
+Tabulation(bottom up)--> climbing 1 step has 1 possible way and 2 steps has 2 possible ways so, we can use dp[1]=1,dp[2]=2(if n>1), then from 3->=n we just
+add the dp[i-1] and dp[i-2];
+
+Space optimization--> we take 2 vars prev=2 and prev2=1, and put a base case, then just from 3->=n we keep adding prev+prev2 and moving prev2 to prev
+and prev to curi... and we return curi as answer.
+
+2) Min cost climbing stairs:- We are given a vector of costs for each stair, we can take either 1 step or 2 steps, and we can start from 0 index or 1 index
+
+Memoization--> if we take 1 step, we have to have to n-1 to go, and if we take 2 steps, we have to go n-2, so we take min of both while returning and add
+the cost of current index to it, and also, we put it into our dp.
+For our base case, we will use if index is 0 or 1 we just return the cost[index]. 
+And, because we can start from either 0 or 1, then we will have to start from n(size)--> n-1 index and n-1(size)-->n-2 index and take the min of both the
+recursive solutions.
+Ofc, we check if dp[index]!=-1 then return dp[index];
+
+Tabulation--> We go from 0 to n-1 --> if(n<2) then we put dp[i] value as cost[i], because if cost is 0 or 1, we will just take min of that...(later)
+Then, else we put dp[i]=cost[i]+min(dp[i-1],dp[i-2]) --> because that was the recurrance relation.
+Then we just return min(dp[n-1],dp[n-2]) because, for 0 ind start, we will have n steps ahead so n-1 index, and for 1 ind start, we will have n-1 steps ahead
+so, n-2 index.
+
+Space Optimization--> as, we need only 2 vars, prev and second prev--> first=cost[0] and second=cost[1], then we can do if n<2 then we return min(f,s)
+or we just run a for loop from 2 to n-1 where we put cur as cost[i]+min(f,s) and then make f=s and s=cur; and then just return min(f,s) because they are
+n-1 and n-2th vals.
+
+3) House Robber 1--> 
+
+4) House Robber 2-->
+
+5) Maximum Alternating Subsequence Sum -->
+
+7) Longest Increasing Subsequence --> 
+
+
+6) Longest Palindromic Substring-->

@@ -1,0 +1,49 @@
+Two Pointers:-
+
+1) Valid Palindrome:- start l from 0 and r from n-1, if !isalnum() left then l++, else if !isalnum() right the r--, else if tolower() both not equal,
+return false, else l++,r-- and in the end if nothing is flagged, return true.
+
+
+2) 2 Sum 2 -- Input array is sorted:- l is start, r is end, if equal then return else if smaller, move l++, else r--.
+
+
+3) 3 Sum:- First sort, then make 2 l,r variables, and run a for loop from 0 to n-1, if previous nums val is equal to current the continue. 
+Then assign l=i+1 and r=n-1.
+Then run a while loop (l<r)
+if(sum>0)r-; else if(sum<0) l++; else pushback into ans and check while l=l+1 L++ and r=r-1 r-- and do l++ and r-- in the end.
+
+
+
+4) Container with Most Water:- Remember 2 things, to maximize area, 1--> we need max distance between left and right pointers, hence we start from 
+extremes. 2--> we can at max take water equivalent to minimum of the 2 heights. 
+
+So, we take 2 vars, maxarea and minheight. 
+while(l<r)  minheight is minimum of l and r. and maxa is max of previous maxa and (r-l)*minh. 
+Then we check if height[l]<height[r] if it is then we move l forward.
+else we move r--.
+
+
+
+
+5) Trapping Rain Water:- 
+
+2 Methods:-
+	1) Take 2 vectors of same size as heights array. PrevG and NextG. Run for loop from 1->n-1. Maximize--> PrevG[i]=max(prevG[i-1],height[i-1])
+	NextG[n-i-1] = max(NextG[n-i],height[n-i]).
+	Now for loop from 0->n-1. Check if min of both prevG and nextG - height[i] is > 0. If yes, then add it to the sum.
+	
+	2) Space Optimization:- Instead of taking 1 pointer and running it from start to end, we can start from both extremes and try to go towards the middle
+	we have the max in left and max in right for now. so, we check which is the limiting height. if l is less than r, then l is limiting one, so we can 
+	solve for that safely. maxl-height[l]... and so on for right.
+	
+	why this works?
+	
+		If we have maxl=10, height[l]=5, height[r]=6, maxr=7 --> this case isn't possible, because for us to reach height[l], it had to pass through 
+		the maxl, so, the maxr must be higher than maxl, or it would never pass.
+		Crazy!!!!
+	
+	l,r at extremes. while(l<r) first we will check for max left through maxl and max right through maxr. 
+	Check if both are max or the current height at l or r is max.
+	Then check for whichever height, the l or r is smaller.
+	if(left is smaller, add maxl-height[l]) and l++;
+	similarly with r and r--.

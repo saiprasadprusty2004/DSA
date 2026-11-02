@@ -1,0 +1,8 @@
+1) Binary Search:-
+
+	check if(arr[mid]>=target){
+		update hi, if(arr[mid]==target) then update ans
+		}
+	else update lo
+	
+2) 

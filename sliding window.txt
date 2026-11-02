@@ -1,0 +1,77 @@
+1) Best time to Buy and Sell stock:- So we have to maximize the price and for that we have to minimize the buy. And always the current price should be
+	atleast 1 in front of the min buy, hence, minb=prices[0] and we will start loop from 1->n-1.
+	If maxp is less than curr price-minb then update maxp.
+	If minb is greater than cur price, then update minb.
+	
+2) Longest Substring without Repeating characters:- 
+	2 methods:- 
+		Take an unordered_map, take l and r both at 0, we have to take maxlength variable too. So while(r<n)
+		Check if s[r] is in the map, if yes, move l to max of l or mpp[s[r]]+1... Because if l is already ahead and mpp[s[r]]+1 val is lower, we cant
+		go back, or else, somewhere else inside the window, there will be another pair of duplicates.
+		Then just place mpp[s[r]] val as r then move r ahead.
+		
+		Take a vector<int> of 128 at -1 value, as 128 values in char if included lower case, upper case, digits,space.
+		Same as before. But, here we can't check if we find it in the map or not. so we check if value at mpp[s[r]]+1 greater than or equal to l,
+		l=mpp[s[l]]+1. 
+		If l is ahead, we can't go back and hence we initialized it as -1 so, in this equation, the value can go as low as 0.
+		Rest is same as above.
+		
+3) Longest Repeating Character Replacement:-
+	We take l,r at 0. While(r<n) first we will increase the frequency of char.
+	Update the max freq.
+	If(curlength-max freq. >k), we have to decrease freq of char at l and l++
+	Update ans by taking max of ans and length.
+	r++
+	
+4) Permutation in String:-
+	Method 1:-
+		Take 2 hash vectors. Get the freq of 1st string.
+		Now we just need to check in fixed window size of 1st string in string 2.
+		
+		So, while(r<n), first increase hash2 freq of r.
+		Check if window size exceeded, if yes, decrease freq of hash2 l val. and l++
+		check hash1==hash2 if true then return true. as both are of 26 size, its O(1).
+		then r++.
+	
+	Method 2:-
+		Take a freq array, store s1 freq in it.
+		Then take required var of size s1.
+		then take 2 pointers at start of s2.
+		check if freq[s2[r]-'a']>0, if yes then decrease required
+		decrease freq of r 
+		Then check if(r-l+1>size of s1), if yes then increase freq of l, then check if freq of l>0, if yes then increase required
+		move l forward
+		if required becomes 0 then return true.
+		r++
+		return false
+		
+5) Minimum Window substring:-
+	Add the one which we want to check into the unordered_map.
+	take 2 pointers, l and r at 0, we have to minimize length, so 1 var will be minlen and we need a stInd to check if ever has the substring or not
+	and also for updating with minlen. and a cnt for counting window size.
+	
+	while(r<n) first check if mpp[s[r]]>0, if true then increase cnt.
+	Decrease frequency of mpp[s[r]].
+	Check while cnt is equal to size of t, check if curlen is < min len, update minlen and stInd. increase freq of l.
+	Check if freq of l is >0 if yes, then decrease cnt.
+	Move l forward.
+	
+	Move r forward.
+	
+	Check if stInd==-1 then return empty string else return the substring from s.
+	
+6) Sliding Window Maximum:-
+	We need 3 things--> a) while current number is greater than back values, popback until !empty or nums curr is smaller.
+						b) while front index val is <= i-k val we pop from front to remove out of window nums.
+						c) the front will always be the max in each window, so we can just put it inside ans.
+						
+	for 0-> n-1 . while deq not empty and nums[deq.back()]<nums[i] pop back from deq.
+	while deq not empty and deq.front()<=i-k which is the window. pop front from deq.
+	then pushback i into the deq.
+	if i>=k-1 everytime, we will keep pushing the front to our answer as, it is the max.
+	
+
+		
+		
+	
+	
